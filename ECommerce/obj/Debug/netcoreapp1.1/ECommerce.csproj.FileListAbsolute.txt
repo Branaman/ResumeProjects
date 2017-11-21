@@ -1,0 +1,10 @@
+C:\Users\mbran\Desktop\Matt_Branaman_Assignments\netCore\ECommerce\obj\Debug\netcoreapp1.1\ECommerce.csproj.CoreCompileInputs.cache
+C:\Users\mbran\Desktop\Matt_Branaman_Assignments\netCore\ECommerce\obj\Debug\netcoreapp1.1\ECommerce.AssemblyInfoInputs.cache
+C:\Users\mbran\Desktop\Matt_Branaman_Assignments\netCore\ECommerce\obj\Debug\netcoreapp1.1\ECommerce.AssemblyInfo.cs
+C:\Users\mbran\Desktop\Matt_Branaman_Assignments\netCore\ECommerce\bin\Debug\netcoreapp1.1\ECommerce.deps.json
+C:\Users\mbran\Desktop\Matt_Branaman_Assignments\netCore\ECommerce\bin\Debug\netcoreapp1.1\ECommerce.runtimeconfig.json
+C:\Users\mbran\Desktop\Matt_Branaman_Assignments\netCore\ECommerce\bin\Debug\netcoreapp1.1\ECommerce.runtimeconfig.dev.json
+C:\Users\mbran\Desktop\Matt_Branaman_Assignments\netCore\ECommerce\bin\Debug\netcoreapp1.1\ECommerce.dll
+C:\Users\mbran\Desktop\Matt_Branaman_Assignments\netCore\ECommerce\bin\Debug\netcoreapp1.1\ECommerce.pdb
+C:\Users\mbran\Desktop\Matt_Branaman_Assignments\netCore\ECommerce\obj\Debug\netcoreapp1.1\ECommerce.dll
+C:\Users\mbran\Desktop\Matt_Branaman_Assignments\netCore\ECommerce\obj\Debug\netcoreapp1.1\ECommerce.pdb

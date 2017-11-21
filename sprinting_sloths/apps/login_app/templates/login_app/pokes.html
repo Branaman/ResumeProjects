@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      {% load static %}
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="{% static "css/materialize.css" %}">
+    <title>Poke Page!</title>
+  </head>
+  <body>
+    <h1 class="center-align">Welcome, {{request.session.name}}!</h1>
+    <div class="center-align">
+      <a class="waves-effect waves-light btn" href="/logout"><i class="material-icons left">exit_to_app</i>Logout</a>
+    </div>
+    <div class="row">
+      <h4 class="center-align">{{times}} people poked you!</h4>
+      <div class="collection center-align col l4 offset-l4" style="height: 200px; overflow-y:auto;">
+        {% if pokers %}
+          {% for Poke in pokers %}
+            {% for User in Users %}
+              {% if User.id is Poke.poker %}
+                <p class="collection-item"><span class="red-text">{{User.alias}}</span> <span class="green-text">Poked you {{Poke.poke_times}} times!</span></p>
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+    <div class="row">
+      <h4 class="center-align">People you may want to poke:</h4>
+      <div class="collection center-align col l8 offset-l2">
+        <p class="collection-item"><span class="red-text">Users Full Name</span> <span class="green-text">Alias</span><span class="orange-text"> Email </span><span class="blue-text"> # of Pokes</span></p>
+          <div style="height: 400px; overflow-y:auto;">
+            {% if Users %}
+              {% for User in Users %}
+                <a href="/poke/{{User.id}}" class="collection-item"><span class="red-text">{{User.name}}</span> <span class="green-text">{{User.alias}}</span><span class="orange-text"> {{User.email}} </span> {{User.pokes}} Pokes</a>
+              {% endfor %}
+            {% endif %}
+          </div>
+      </div>
+    </div>
+  </body>
+</html>

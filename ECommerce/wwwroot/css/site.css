@@ -1,0 +1,13 @@
+.product{
+    text-align: center;
+    height: 75px;
+    width: 75px;
+    display: inline-block;
+}
+img{
+    height: 50px;
+    width: 50px;
+}
+table{
+    text-align: center;
+}

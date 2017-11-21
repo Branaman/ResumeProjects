@@ -1,0 +1,36 @@
+<h1>Welcome to E-Commerce</h1>
+@{
+    ViewData["Title"] = "Log In / Registration";
+}
+<div>
+    @{
+        foreach(var error in ViewBag.errors)
+        {
+            if(@error.Errors.Count > 0)
+            {
+                <p>@error.Errors[0].ErrorMessage</p>
+            }
+        }
+    }
+</div>
+<h1>Add a new Product</h1>
+<form action="/addproduct" method="post">
+    <label for="productname">Name:</label>
+    <input type="text" name="name" id="productname" value="">
+    <label for="productimage">Image (url):</label>
+    <input type="text" name="image" id="productimage" value="http://">
+    <label for="productdescription">Description:</label>
+    <input type="text" name="description" id="productdescription" value="">
+    <label for="productquantity">Initial Quantity:</label>
+    <input type="number" name="quantity" id="productquantity" value="">
+    <input type="submit" value="Create">
+</form>
+<h1>All products</h1>
+    @foreach(var Product in @ViewBag.AllProducts)
+    {
+        <div class="product">
+            <h3>@Product.name</h3>
+            <img src="@Product.image">
+            <p>(@Product.quantity left)</p>
+        </div>
+    }

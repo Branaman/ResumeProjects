@@ -1,0 +1,33 @@
+@{
+    ViewData["Title"] = "New Activity";
+}
+<div>
+    @{
+        foreach(var error in ViewBag.errors)
+        {
+            if(@error.Errors.Count > 0)
+            {
+                <p>@error.Errors[0].ErrorMessage</p>
+            }
+        }
+    }
+</div>
+<h1>Create an Activity!</h1>
+<form action="/addactivity" method="post">
+    <label for="activityname">Title:</label>
+    <input type="text" name="title" id="title" value="" required>
+    <label for="timeInput">Time:</label>
+    <input type="time" name="time" id="timeInput" value="" required>
+    <label for="dateInput">Date:</label>
+    <input type="date" name="date" id="dateInput" value="" required>
+    <label for="activityduration">Duration:</label>
+    <input type="number" name="duration" id="activityduration" value="" required>
+    <select name="timeMod" required>
+        <option value="Minutes">Minutes</option>
+        <option value="Hours">Hours</option>
+        <option value="Days">Days</option>
+    </select>
+    <label for="activitydescription">Description:</label>
+    <input type="text" name="description" id="activitydescription" value="" required>
+    <input type="submit" value="Create Activity">
+</form>

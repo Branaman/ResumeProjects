@@ -1,0 +1,53 @@
+@{
+    ViewData["Title"] = "Home";
+}
+<div>
+    @{
+        foreach(var error in ViewBag.errors)
+        {
+            if(@error.Errors.Count > 0)
+            {
+                <p>@error.Errors[0].ErrorMessage</p>
+            }
+        }
+    }
+</div>
+<h1>All Activities</h1>
+<table>
+    <tr>
+        <th>Activity</th>
+        <th>Date and Time</th>
+        <th>Duration</th>
+        <th>Event Coordinator</th>
+        <th>Number of Participants</th>
+        <th>Actions</th>
+    </tr>
+    @foreach(var activity in @ViewBag.AllActivities)
+    {   
+        var skip = false;
+        <tr>
+        <td><a href="/activity/@activity.idactivities">@activity.title</a></td>
+        <td>@activity.date.ToString("MM/dd @ HH:mm")</td>
+        <td>@activity.duration</td>
+        <td>@activity.coordinator</td>
+        <td>@activity.participants</td>
+        @foreach(var Joined in @ViewBag.JoinedActivities)
+        {
+            @if(activity.idactivities == Joined.idactivities)
+            {
+                <td><form action="/leaveactivity/@activity.idactivities/@ViewBag.userID" method="POST"><input type="submit" value="Leave"></form></td>
+            skip = true;
+            }
+        }
+        @if (!skip)
+        {
+            <td><form action="/joinactivity/@activity.idactivities/@ViewBag.userID" method="POST"><input type="submit" value="Join"></form></td>
+        }
+        @if (activity.coordinatorID == @ViewBag.userID)
+        {
+            <td><form action="/deleteactivity/@activity.idactivities/@ViewBag.userID" method="POST"><input type="submit" value="Delete"></form></td>
+        }
+        </tr>
+    }
+</table>
+<a href="/New">Add New Activity!</a>

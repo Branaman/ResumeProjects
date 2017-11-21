@@ -1,0 +1,35 @@
+<h1>Welcome to E-Commerce</h1>
+@{
+    ViewData["Title"] = "Log In / Registration";
+}
+<div>
+    @{
+        foreach(var error in ViewBag.errors)
+        {
+            if(@error.Errors.Count > 0)
+            {
+                <p>@error.Errors[0].ErrorMessage</p>
+            }
+        }
+    }
+</div>
+<p>Login</p>
+<form action="/login" method="post">
+    <label for="nameInput">Username:</label>
+    <input id="nameInput" type="text" name="username" value="" required>
+    <label for="passInput">Password:</label>
+    <input id="passInput" type="text" name="password" value="" required>
+    <input type="submit" value="Submit!">
+</form>
+<p>Register</p>
+<form action="/register" method="post">
+    <label for="nameInput">Username:</label>
+    <input id="nameInput" type="text" name="username" value="" required>
+    <label for="emilInput">Email:</label>
+    <input id="emilInput" type="text" name="email" value="" required>
+    <label for="passInput">Password:</label>
+    <input id="passInput" type="text" name="password" value="" required>
+    <label for="CpassInput">Confirm Password:</label>
+    <input id="CpassInput" type="text" name="ConfirmPassword" value="" required>
+    <input type="submit" value="Submit!">
+</form>

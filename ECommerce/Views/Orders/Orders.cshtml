@@ -1,0 +1,42 @@
+<h1>Welcome to E-Commerce</h1>
+@{
+    ViewData["Title"] = "Log In / Registration";
+}
+<div>
+    @{
+        foreach(var error in ViewBag.errors)
+        {
+            if(@error.Errors.Count > 0)
+            {
+                <p>@error.Errors[0].ErrorMessage</p>
+            }
+        }
+    }
+</div>
+<h1>Add a new order</h1>
+<form action="/addorder" method="post">
+    <input type="hidden" name="users_idusers" id="ordercustomer" value="@ViewBag.userID">
+    <label for="orderproduct">Product:</label>
+    <input type="number" name="products_idproducts" id="orderproduct" value="">
+    <label for="orderquantity">Initial Quantity:</label>
+    <input type="number" name="quantity" id="orderquantity" value="">
+    <input type="submit" value="Order">
+</form>
+<h1>All orders</h1>
+<table>
+    <tr>
+        <th>Customer Name</th>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Date</th>
+    </tr>
+    @foreach(var order in @ViewBag.Allorders)
+    {
+        <tr>
+            <td>@order.username</td>
+            <td>@order.name</td>
+            <td>@order.quantity</td>
+            <td>@order.created_at.ToString("MM/dd/yyyy")</td>
+        </tr>
+    }
+</table>
