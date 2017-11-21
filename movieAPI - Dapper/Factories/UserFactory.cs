@@ -20,7 +20,7 @@ namespace movieAPI.Factories {
         public LoginUser GetUser(LoginUser User) {
                 using(IDbConnection dbConnection = Connection)
                 {
-                    string query = $"SELECT * FROM users WHERE username = '{User.username}'";
+                    string query = $"SELECT * FROM users WHERE email = '{User.email}'";
                     using(IDbCommand command = dbConnection.CreateCommand())
                     {
                         dbConnection.Open();
@@ -31,7 +31,7 @@ namespace movieAPI.Factories {
         public string AddUser(RegisterUser User){
             using (IDbConnection dbConnection = Connection)
             {
-                string query = $"INSERT INTO users (username, email, password) VALUES (@username,@email,@password)";
+                string query = $"INSERT INTO users (email, password) VALUES (@email,@password)";
                 dbConnection.Open();
                 try
                 {

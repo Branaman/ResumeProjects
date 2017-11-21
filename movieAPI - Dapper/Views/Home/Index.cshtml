@@ -13,23 +13,25 @@
         }
     }
 </div>
-<p>Login</p>
-<form action="/login" method="post">
-    <label for="nameInput">Username:</label>
-    <input id="nameInput" type="text" name="username" value="" required>
-    <label for="passInput">Password:</label>
-    <input id="passInput" type="text" name="password" value="" required>
-    <input type="submit" value="Submit!">
-</form>
-<p>Register</p>
-<form action="/register" method="post">
-    <label for="nameInput">Username:</label>
-    <input id="nameInput" type="text" name="username" value="" required>
-    <label for="emilInput">Email:</label>
-    <input id="emilInput" type="text" name="email" value="" required>
-    <label for="passInput">Password:</label>
-    <input id="passInput" type="text" name="password" value="" required>
-    <label for="CpassInput">Confirm Password:</label>
-    <input id="CpassInput" type="text" name="ConfirmPassword" value="" required>
-    <input type="submit" value="Submit!">
-</form>
+<div class="container">
+    <form class="form-signin" action="/login" method="post">
+    <h2 class="form-signin-heading">Please sign in</h2>
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    </form>
+</div>
+<div class="container">
+    <form class="form-signin" action="/register" method="post">
+    <h2 class="form-signin-heading">Please register</h2>
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+    <label for="CinputPassword" class="sr-only">Confirm Password</label>
+    <input name="ConfirmPassword" type="password" id="CinputPassword" class="form-control" placeholder="Confirm Password" required>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+    </form>
+</div>

@@ -44,3 +44,46 @@
         }
     }
 </table>
+    <main role="main">
+        <section class="jumbotron text-center">
+            <div class="container">
+                <h1 class="jumbotron-heading">Movies</h1>
+                <p>
+                <a href="#" class="btn btn-primary">Main call to action</a>
+                <a href="#" class="btn btn-secondary">Secondary action</a>
+                </p>
+            </div>
+        </section>
+        @foreach(var Movie in @ViewBag.AllMovies)
+        {
+            var skip = false;
+            foreach(var Fav in @ViewBag.FavMovies)
+            {
+                if (Movie.idmovies == Fav.idmovies)
+                {
+                    <div class="card">
+                        <img data-src="holder.js/100px280?theme=thumb" alt="Card image cap">
+                        <p class="card-text">@Movie.title</p>
+                        <p class="card-text">@Movie.rating</p>
+                        <p class="card-text">@Movie.released.ToString("MM/dd/yyyy")</p>
+                        <form action="/unfavorite/@Movie.idmovies/@ViewBag.userID" method="POST">
+                            <input class="btn btn-primary" type="submit" value="UnFavorite">
+                        </form>
+                    </div>
+                    skip = true;
+                }
+            }
+            if (!skip)
+            {
+            <div class="card">
+            <img data-src="holder.js/100px280?theme=thumb" alt="Card image cap">
+            <p class="card-text">@Movie.title</p>
+            <p class="card-text">@Movie.rating</p>
+            <p class="card-text">@Movie.released.ToString("MM/dd/yyyy")</p>
+            <form action="/favorite/@Movie.idmovies/@ViewBag.userID" method="POST">
+                <input class="btn btn-primary" type="submit" value="Favorite">
+            </form>
+            </div>
+            }
+        }
+    </main>
