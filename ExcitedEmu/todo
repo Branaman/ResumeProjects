@@ -1,9 +1,0 @@
-Login (validation); Registration (validation); Logout
-Should not be able to navigate to any page outside of Login/Registration without first logging in.
-Home page has a listing of all current activities, their creators, and time frames
-Past activities should no longer be listed on the Home page
-Activities are listed in ascending order according to the date/time of the activity, with the oldest activity at the top
-Ability to Join/Leave/Delete an activity from both Home and Activity show pages
-Activity show page should list all other users (not created) who have joined.
-Users can create new activities, providing all information relating to the activity as well as a start time and duration (validation)
-Activities can not be joined if their times/durations conflict with one another

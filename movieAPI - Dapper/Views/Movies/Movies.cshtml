@@ -1,0 +1,46 @@
+@{
+    ViewData["Title"] = "Movies Page";
+}
+<a href="/logout">Logout</a>
+<p>Add a Movie!</p>
+<form action="/addMovie" method="post">
+    <label for="movieInput">Movie name:</label>
+    <input id="movieInput" type="text" name="movie" value="" required>
+    <input type="submit" value="Submit!">
+</form>
+<p>@ViewBag.MovieInfo</p>
+<h1>All Movies</h1>
+<table>
+    <tr>
+        <th>Movie</th>
+        <th>Rating</th>
+        <th>Release Date</th>
+        <th>Favorite</th>
+    </tr>
+    @foreach(var Movie in @ViewBag.AllMovies)
+    {
+        var skip = false;
+        foreach(var Fav in @ViewBag.FavMovies)
+        {
+            if (Movie.idmovies == Fav.idmovies)
+            {
+                <tr>
+                    <td>@Fav.title</td>
+                    <td>@Fav.rating</td>
+                    <td>@Fav.released.ToString("MM/dd/yyyy")</td>
+                    <td><form action="/unfavorite/@Movie.idmovies/@ViewBag.userID" method="POST"><input type="submit" value="UnFavorite"></form></td>
+                </tr>
+                skip = true;
+            }
+        }
+        if (!skip)
+        {
+        <tr>
+            <td>@Movie.title</td>
+            <td>@Movie.rating</td>
+            <td>@Movie.released.ToString("MM/dd/yyyy")</td>
+            <td><form action="/favorite/@Movie.idmovies/@ViewBag.userID" method="POST"><input type="submit" value="Favorite"></form></td>
+        </tr>
+        }
+    }
+</table>
