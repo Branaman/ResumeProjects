@@ -22,7 +22,7 @@ namespace movieAPI.Factories {
             {
                 using(IDbCommand command = dbConnection.CreateCommand())
                 {
-                    string query = $"SELECT movies.idmovies, movies.title, movies.rating, movies.released FROM movies LEFT OUTER JOIN favorites ON movies.idmovies = favorites.movies_idmovies where favorites.users_idusers = {userID}";
+                    string query = $"SELECT movies.idmovies, movies.title, movies.rating, movies.released, movies.poster FROM movies LEFT OUTER JOIN favorites ON movies.idmovies = favorites.movies_idmovies where favorites.users_idusers = {userID}";
                     dbConnection.Open();
                     return dbConnection.Query<Movie>(query).ToList();
                 }
@@ -42,7 +42,7 @@ namespace movieAPI.Factories {
         public string AddMovie(Movie Movie){
             using (IDbConnection dbConnection = Connection)
             {
-                string query = $"INSERT INTO movies (title, rating, released) VALUES (@title,@rating,@released)";
+                string query = $"INSERT INTO movies (title, rating, released, poster) VALUES (@title,@rating,@released,@poster)";
                 dbConnection.Open();
                 try
                 {

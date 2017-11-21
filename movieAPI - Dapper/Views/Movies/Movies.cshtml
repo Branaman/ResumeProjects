@@ -1,89 +1,72 @@
 @{
     ViewData["Title"] = "Movies Page";
 }
+<link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
+<link rel="stylesheet" href="~/css/thumbnail-gallery.css">
 <a href="/logout">Logout</a>
-<p>Add a Movie!</p>
-<form action="/addMovie" method="post">
-    <label for="movieInput">Movie name:</label>
-    <input id="movieInput" type="text" name="movie" value="" required>
-    <input type="submit" value="Submit!">
-</form>
-<p>@ViewBag.MovieInfo</p>
-<h1>All Movies</h1>
-<table>
-    <tr>
-        <th>Movie</th>
-        <th>Rating</th>
-        <th>Release Date</th>
-        <th>Favorite</th>
-    </tr>
-    @foreach(var Movie in @ViewBag.AllMovies)
-    {
-        var skip = false;
-        foreach(var Fav in @ViewBag.FavMovies)
-        {
-            if (Movie.idmovies == Fav.idmovies)
-            {
-                <tr>
-                    <td>@Fav.title</td>
-                    <td>@Fav.rating</td>
-                    <td>@Fav.released.ToString("MM/dd/yyyy")</td>
-                    <td><form action="/unfavorite/@Movie.idmovies/@ViewBag.userID" method="POST"><input type="submit" value="UnFavorite"></form></td>
-                </tr>
-                skip = true;
-            }
-        }
-        if (!skip)
-        {
-        <tr>
-            <td>@Movie.title</td>
-            <td>@Movie.rating</td>
-            <td>@Movie.released.ToString("MM/dd/yyyy")</td>
-            <td><form action="/favorite/@Movie.idmovies/@ViewBag.userID" method="POST"><input type="submit" value="Favorite"></form></td>
-        </tr>
-        }
-    }
-</table>
     <main role="main">
+        <div class="container gallery-container">
         <section class="jumbotron text-center">
             <div class="container">
                 <h1 class="jumbotron-heading">Movies</h1>
-                <p>
-                <a href="#" class="btn btn-primary">Main call to action</a>
-                <a href="#" class="btn btn-secondary">Secondary action</a>
-                </p>
+                <div class="container">
+                    <form class="form-signin" action="/addMovie" method="post">
+                    <label for="inputMovie" class="sr-only">Movie Title</label>
+                    <input name="movie" type="text" id="inputMovie" class="form-control" placeholder="Movie Title" required autofocus>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Add a Movie!</button>
+                    </form>
+                </div>
             </div>
         </section>
-        @foreach(var Movie in @ViewBag.AllMovies)
-        {
-            var skip = false;
-            foreach(var Fav in @ViewBag.FavMovies)
-            {
-                if (Movie.idmovies == Fav.idmovies)
-                {
-                    <div class="card">
-                        <img data-src="holder.js/100px280?theme=thumb" alt="Card image cap">
-                        <p class="card-text">@Movie.title</p>
-                        <p class="card-text">@Movie.rating</p>
-                        <p class="card-text">@Movie.released.ToString("MM/dd/yyyy")</p>
-                        <form action="/unfavorite/@Movie.idmovies/@ViewBag.userID" method="POST">
-                            <input class="btn btn-primary" type="submit" value="UnFavorite">
-                        </form>
-                    </div>
-                    skip = true;
-                }
-            }
-            if (!skip)
-            {
-            <div class="card">
-            <img data-src="holder.js/100px280?theme=thumb" alt="Card image cap">
-            <p class="card-text">@Movie.title</p>
-            <p class="card-text">@Movie.rating</p>
-            <p class="card-text">@Movie.released.ToString("MM/dd/yyyy")</p>
-            <form action="/favorite/@Movie.idmovies/@ViewBag.userID" method="POST">
-                <input class="btn btn-primary" type="submit" value="Favorite">
-            </form>
+            <div class="tz-gallery">
+                <div class="row">
+                    @foreach(var Movie in @ViewBag.AllMovies)
+                    {
+                        var skip = false;
+                        foreach(var Fav in @ViewBag.FavMovies)
+                        {
+                            if (Movie.idmovies == Fav.idmovies)
+                            {
+                                <div class="col-sm-6 col-md-4">
+                                    <div class="thumbnail">
+                                        <a class="lightbox" href="@Movie.poster">
+                                            <img src="@Movie.poster">
+                                        </a>
+                                        <div class="caption">
+                                            <p class="card-text">@Movie.title</p>
+                                            <p class="card-text">Rating: @Movie.rating/10</p>
+                                            <p class="card-text">Released: @Movie.released.ToString("MM/dd/yyyy")</p>
+                                            <form action="/unfavorite/@Movie.idmovies/@ViewBag.userID" method="POST">
+                                                <input class="btn btn-primary" type="submit" value="UnFavorite">
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                skip = true;
+                            }
+                        }
+                        if (!skip)
+                        {
+                        <div class="col-sm-6 col-md-4">
+                            <div class="thumbnail">
+                                <a class="lightbox" href="@Movie.poster">
+                                    <img src="@Movie.poster">
+                                </a>
+                                <div class="caption">
+                                    <p class="card-text">@Movie.title</p>
+                                    <p class="card-text">Rating: @Movie.rating/10</p>
+                                    <p class="card-text">Released: @Movie.released.ToString("MM/dd/yyyy")</p>
+                                    <form action="/favorite/@Movie.idmovies/@ViewBag.userID" method="POST">
+                                        <input class="btn btn-primary" type="submit" value="Favorite">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        }
+                    }   
+                </div>
             </div>
-            }
-        }
+        </div>
     </main>
+</div>

@@ -46,6 +46,7 @@ namespace movieAPI
                     }
                     Movie MovieData = new Movie
                     {
+                        poster = "https://image.tmdb.org/t/p/w640" + FirstMovie["poster_path"].Value<string>(),
                         title = FirstMovie["title"].Value<string>(),
                         rating = FirstMovie["vote_average"].Value<float>(),
                         released = released
