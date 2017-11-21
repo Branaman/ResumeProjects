@@ -1,0 +1,47 @@
+<div id='question'>
+    {{questionInstance|json}}
+    <form (submit)="onSubmit()" #formObject='ngForm'>
+      <label for="question">Question<span *ngIf='question?.valid !== true'>{{question?.errors | json}}</span></label>
+      <input
+      type="text"
+      name="question"
+      required
+      minlength="15"
+      maxlength="255"
+      [(ngModel)]="questionInstance.question"
+      #question='ngModel'
+      />
+      <label for="Canswer">Correct Answer<span *ngIf='Canswer?.valid !== true'>{{Canswer?.errors | json}}</span></label>
+      <input
+      type="text"
+      name="Canswer"
+      required
+      minlength="1"
+      maxlength="255"
+      [(ngModel)]="questionInstance.Canswer"
+      #Canswer='ngModel'
+      />
+      <label for="Fanswer1">Fake Answer 1<span *ngIf='Fanswer1?.valid !== true'>{{Fanswer1?.errors | json}}</span></label>
+      <input
+      type="text"
+      name="Fanswer1"
+      required
+      minlength="1"
+      maxlength="255"
+      [(ngModel)]="questionInstance.Fanswer1"
+      #Fanswer1='ngModel'
+      />
+      <label for="Fanswer2">Fake Answer 2<span *ngIf='Fanswer2?.valid !== true'>{{Fanswer2?.errors | json}}</span></label>
+      <input
+      type="text"
+      name="Fanswer2"
+      required
+      minlength="1"
+      maxlength="255"
+      [(ngModel)]="questionInstance.Fanswer2"
+      #Fanswer2='ngModel'
+      />
+      <input type="submit"
+      [disabled]="formObject.invalid">
+    </form>
+</div>
