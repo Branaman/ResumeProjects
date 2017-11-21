@@ -1,0 +1,8 @@
+<div class="navBar">
+  <a [routerLink]="['dashboard/leaderboard']">Dashboard</a>
+  <a *ngIf='loginState'href="/dashboard/myquestions">My Questions</a>
+  <a *ngIf='loginState'href="/dashboard/new_question">Make a Question!</a>
+  <a *ngIf='!loginState' href="/">Log in</a>
+  <a *ngIf='loginState' href="/logout">Log off</a>
+</div>
+<router-outlet></router-outlet>

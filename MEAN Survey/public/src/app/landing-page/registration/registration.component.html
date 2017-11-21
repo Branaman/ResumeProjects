@@ -1,0 +1,61 @@
+<h1>Registration</h1>
+<div id='reg'>
+  {{message}}
+  <form (submit)="onSubmit()" #formObject='ngForm'>
+    <label for="email">Email<span *ngIf='email?.valid !== true'>{{email?.errors | json}}</span></label>
+    <input
+      type="text"
+      name="email"
+      required
+      minlength="4"
+      maxlength="100"
+      pattern="^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$"
+      [(ngModel)]="userInstance.email"
+      #email='ngModel'
+    />
+    <label for="first_name">First Name<span *ngIf='first_name?.valid !== true'>{{first_name?.errors | json}}</span></label>
+    <input
+      type="text"
+      name="first_name"
+      required
+      minlength="1"
+      maxlength="24"
+      [(ngModel)]="userInstance.first_name"
+      #first_name='ngModel'
+    />
+    <label for="last_name">Last Name<span *ngIf='last_name?.valid !== true'>{{last_name?.errors | json}}</span></label>
+    <input
+      type="text"
+      name="last_name"
+      required
+      minlength="1"
+      maxlength="24"
+      [(ngModel)]="userInstance.last_name"
+      #last_name='ngModel'
+    />
+    <label for="password">Password<span *ngIf='password?.valid !== true'>{{password?.errors | json}}</span></label>
+    <input
+      type="text"
+      name="password"
+      required
+      minlength="8"
+      maxlength="24"
+      pattern="^([a-zA-Z0-9@*#]{8,15})$"
+      [(ngModel)]="userInstance.password"
+      #password='ngModel'
+    />
+    <label for="passwordC">Password Confirmation<span *ngIf='passwordC?.valid !== true'>{{passwordC?.errors | json}}</span></label>
+    <input
+      type="text"
+      name="passwordC"
+      required
+      minlength="8"
+      maxlength="24"
+      pattern="^([a-zA-Z0-9@*#]{8,15})$"
+      [(ngModel)]="userInstance.passwordC"
+      #passwordC='ngModel'
+    />
+    <input type="submit"
+    [disabled]="formObject.invalid || userInstance.password !== userInstance.passwordC">
+  </form>
+</div>
